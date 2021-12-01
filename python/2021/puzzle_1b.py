@@ -3,31 +3,22 @@ puzzleInput = open("inputs/00.txt", "r")
 measurementsLargerThanPrevious = 0
 firstWindow = []
 secondWindow = []
-
-
-def sum_n_elements(arr, n):
-    current_sum = 0
-    for index in range(0, n):
-        current_sum += arr[index]
-    return current_sum
-
+input_count = 1
 
 for line in puzzleInput:
     integerLine = int(line)
 
     if len(firstWindow) > 0:
-        secondWindow.insert(0, integerLine)
-    if len(secondWindow) < 3:
-        firstWindow.insert(0, integerLine)
+        secondWindow.append(integerLine)
 
-    print(firstWindow)
-    print(secondWindow)
+    if len(secondWindow) == 3:
+        if sum(secondWindow) > sum(firstWindow):
+            measurementsLargerThanPrevious += 1
 
-    if len(secondWindow) >= 3 and sum_n_elements(secondWindow, 3) > sum_n_elements(firstWindow, 3):
-        measurementsLargerThanPrevious += 1
+        firstWindow.pop(0)
+        secondWindow.pop(0)
 
-    lastLine = integerLine
-    if len(secondWindow) > 5:
-        break
+    firstWindow.append(integerLine)
+    input_count += 1
 
 print(measurementsLargerThanPrevious)
