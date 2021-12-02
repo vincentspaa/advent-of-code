@@ -1,11 +1,11 @@
-puzzleInput = open("inputs/00.txt", "r")
+puzzle_input = open("inputs/00.txt", "r")
 
 measurementsLargerThanPrevious = 0
 firstWindow = []
 secondWindow = []
 input_count = 1
 
-for line in puzzleInput:
+for line in puzzle_input:
     integerLine = int(line)
 
     if len(firstWindow) > 0:
