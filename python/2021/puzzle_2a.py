@@ -1,4 +1,4 @@
-puzzle_input = open("inputs/01.txt", "r")
+puzzle_input = open("inputs/02.txt", "r")
 
 horizontalPosition = 0
 depth = 0

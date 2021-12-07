@@ -1,4 +1,4 @@
-puzzle_input = open("inputs/00.txt", "r")
+puzzle_input = open("inputs/01.txt", "r")
 
 measurementsLargerThanPrevious = 0
 firstWindow = []

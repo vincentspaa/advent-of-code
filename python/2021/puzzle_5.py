@@ -55,7 +55,7 @@ def count_intersections(ocean_floor, threshold=2):
 
 
 def main():
-    puzzle_input = open("inputs/04.txt", "r")
+    puzzle_input = open("inputs/05.txt", "r")
 
     ocean_floor = {}
 

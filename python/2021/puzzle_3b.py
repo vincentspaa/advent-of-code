@@ -1,4 +1,4 @@
-input_file_name = "inputs/02.txt"
+input_file_name = "inputs/03.txt"
 
 
 def get_most_and_least_common_at(input_lines, index):

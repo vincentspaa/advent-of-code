@@ -1,4 +1,4 @@
-puzzle_input = open("inputs/02.txt", "r")
+puzzle_input = open("inputs/03.txt", "r")
 
 zero_value_counts = {}
 one_value_counts = {}

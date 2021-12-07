@@ -110,7 +110,7 @@ def print_board(numbers_on_board):
 
 
 def main():
-    puzzle_input = open("inputs/03.txt", "r")
+    puzzle_input = open("inputs/04.txt", "r")
     random_numbers = get_numbers_from_line(puzzle_input.readline(), ',')
 
     lowest_numbers_needed = 9000
