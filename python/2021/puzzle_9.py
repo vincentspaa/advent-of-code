@@ -16,7 +16,7 @@ class MapPoint:
         return self.line_index != other.line_index or self.point_index != other.point_index
 
 
-def recursive_basic_grow(current_point, height_map, low_point_map, considered_points: [MapPoint]):
+def recursive_basin_grow(current_point, height_map, low_point_map, considered_points: [MapPoint]):
     if current_point in considered_points:
         return 0, considered_points
 
@@ -29,22 +29,22 @@ def recursive_basic_grow(current_point, height_map, low_point_map, considered_po
 
     if current_point.line_index > 0:
         next_point = MapPoint(current_point.line_index - 1, current_point.point_index)
-        increment, considered_points = recursive_basic_grow(next_point, height_map, low_point_map, considered_points)
+        increment, considered_points = recursive_basin_grow(next_point, height_map, low_point_map, considered_points)
         count += increment
 
     if current_point.line_index < (len(height_map) - 1):
         next_point = MapPoint(current_point.line_index + 1, current_point.point_index)
-        increment, considered_points = recursive_basic_grow(next_point, height_map, low_point_map, considered_points)
+        increment, considered_points = recursive_basin_grow(next_point, height_map, low_point_map, considered_points)
         count += increment
 
     if current_point.point_index > 0:
         next_point = MapPoint(current_point.line_index, current_point.point_index - 1)
-        increment, considered_points = recursive_basic_grow(next_point, height_map, low_point_map, considered_points)
+        increment, considered_points = recursive_basin_grow(next_point, height_map, low_point_map, considered_points)
         count += increment
 
     if current_point.point_index < (len(height_map[0]) - 1):
         next_point = MapPoint(current_point.line_index, current_point.point_index + 1)
-        increment, considered_points = recursive_basic_grow(next_point, height_map, low_point_map, considered_points)
+        increment, considered_points = recursive_basin_grow(next_point, height_map, low_point_map, considered_points)
         count += increment
 
     return count + 1, considered_points
@@ -98,7 +98,7 @@ def main():
                 if low_point_line[point_index] is True:
                     current_point = MapPoint(line_index, point_index)
 
-                    basin_size, _ = recursive_basic_grow(current_point, height_map, low_point_map, [])
+                    basin_size, _ = recursive_basin_grow(current_point, height_map, low_point_map, [])
                     basin_sizes.append(basin_size)
 
         biggest_three = list(itertools.islice((reversed(sorted(basin_sizes))), 3))
